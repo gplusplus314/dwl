@@ -1,3 +1,6 @@
+// This file contains things I actually use for configuration. If it's not a
+// default, it's in here.
+
 #ifndef _GDE_CONFIG_H_
 #define _GDE_CONFIG_H_
 
@@ -103,32 +106,31 @@ static const char *menucmd[] = {"wofi", "--show=drun", "--allow-images", NULL};
 static const Key keys[] = {
     /* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
     /* modifier                  key                 function        argument */
-    {MODKEY, XKB_KEY_o, spawn, {.v = menucmd}},
-    {MODKEY, XKB_KEY_Return, spawn, {.v = termcmd}},
-    {MODKEY, XKB_KEY_Down, focusstack, {.i = +1}},
-    {MODKEY, XKB_KEY_Up, focusstack, {.i = -1}},
-    {MODKEY, XKB_KEY_comma, incnmaster, {.i = +1}},
-    {MODKEY, XKB_KEY_period, incnmaster, {.i = -1}},
-    {MODKEY, XKB_KEY_Left, setmfact, {.f = -0.05}},
-    {MODKEY, XKB_KEY_Right, setmfact, {.f = +0.05}},
-    {MODKEY, XKB_KEY_Escape, togglefloating, {0}},
+    {MODKEY,                     XKB_KEY_o,          spawn,          {.v = menucmd}},
+    {MODKEY,                     XKB_KEY_Return,     spawn,          {.v = termcmd}},
+    {MODKEY,                     XKB_KEY_Down,       focusstack,     {.i = +1}},
+    {MODKEY,                     XKB_KEY_Up,         focusstack,     {.i = -1}},
+    {MODKEY,                     XKB_KEY_comma,      incnmaster,     {.i = +1}},
+    {MODKEY,                     XKB_KEY_period,     incnmaster,     {.i = -1}},
+    {MODKEY,                     XKB_KEY_Left,       setmfact,       {.f = -0.05}},
+    {MODKEY,                     XKB_KEY_Right,      setmfact,       {.f = +0.05}},
+    {MODKEY,                     XKB_KEY_Escape,     togglefloating, {0}},
 
-    TAGKEYS(XKB_KEY_1, XKB_KEY_exclam, 0),
-    TAGKEYS(XKB_KEY_2, XKB_KEY_at, 1),
-    TAGKEYS(XKB_KEY_3, XKB_KEY_numbersign, 2),
-    TAGKEYS(XKB_KEY_4, XKB_KEY_dollar, 3),
-    TAGKEYS(XKB_KEY_5, XKB_KEY_percent, 4),
+    {MOD_C,                      XKB_KEY_q,          killclient,     {0}},
+    {MODHYPER,                   XKB_KEY_Q,          quit,           {0}},
+
+    TAGKEYS(XKB_KEY_1, XKB_KEY_exclam,      0),
+    TAGKEYS(XKB_KEY_2, XKB_KEY_at,          1),
+    TAGKEYS(XKB_KEY_3, XKB_KEY_numbersign,  2),
+    TAGKEYS(XKB_KEY_4, XKB_KEY_dollar,      3),
+    TAGKEYS(XKB_KEY_5, XKB_KEY_percent,     4),
     TAGKEYS(XKB_KEY_6, XKB_KEY_asciicircum, 5),
-    TAGKEYS(XKB_KEY_7, XKB_KEY_ampersand, 6),
-    TAGKEYS(XKB_KEY_8, XKB_KEY_asterisk, 7),
-    TAGKEYS(XKB_KEY_9, XKB_KEY_parenleft, 8),
-    TAGKEYS(XKB_KEY_0, XKB_KEY_parenright, 9),
+    TAGKEYS(XKB_KEY_7, XKB_KEY_ampersand,   6),
+    TAGKEYS(XKB_KEY_8, XKB_KEY_asterisk,    7),
+    TAGKEYS(XKB_KEY_9, XKB_KEY_parenleft,   8),
+    TAGKEYS(XKB_KEY_0, XKB_KEY_parenright,  9),
+		// TODO: [, {, ], }
 
-    {WLR_MODIFIER_CTRL, XKB_KEY_q, killclient, {0}},
-    {MODHYPER, XKB_KEY_Q, quit, {0}},
-
-    /* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */
-    {WLR_MODIFIER_CTRL | WLR_MODIFIER_ALT, XKB_KEY_Terminate_Server, quit, {0}},
 
 // CHange Virtual TTY
 #define CHVT(n)                                                                \
@@ -154,9 +156,9 @@ static const Key keys[] = {
 //{{{ Mouse buttons
 
 static const Button buttons[] = {
-    {MODKEY, BTN_LEFT, moveresize, {.ui = CurMove}},
+    {MODKEY, BTN_LEFT,   moveresize,     {.ui = CurMove}},
     {MODKEY, BTN_MIDDLE, togglefloating, {0}},
-    {MODKEY, BTN_RIGHT, moveresize, {.ui = CurResize}},
+    {MODKEY, BTN_RIGHT,  moveresize,     {.ui = CurResize}},
 };
 
 //}}}
